@@ -1,26 +1,9 @@
-const { isValid } = require('../utils/jwtUtils');
-const isLoggedIn = (req, res, next) => {
-    const authHeader = req.headers['authorization']
+const ApiError = require('./errorhandler/api-error.js');
 
 
-    if (!authHeader){
-        return next(ApiError.badRequest('unauthorized'))
-    }
+const notFound = (req, res, next) => {
 
-    if (authHeader.startsWith('Bearer')){
-
-        const token = authHeader.split(' ')[1]
-
-        try{
-            const payload = isValid(token)
-            req.user = {userId: payload.id}
-            next()
-        }catch(error){
-            return next(ApiError.badRequest('Authentication failed'))
-        }
-    }else{
-        return next(ApiError.badRequest('Invalid authorization header'))
-    }
+    next(ApiError.notFound())
 }
 
-export default isLoggedIn
+module.exports =  notFound;

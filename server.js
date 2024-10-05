@@ -6,12 +6,12 @@ const bookRouter = require('./routes/books');
 const authRouter = require('./routes/auth');
 const { notFound } = require('./middleware/errorhandler/api-error');
 require('dotenv').config();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 const app = express();
 
 //middleware
 app.use(express.json());
-app.use(notFound);
+// app.use(notFound);
 app.use(errorHandler);
 //connect database
 connectDb();
@@ -23,6 +23,6 @@ app.get('/', (req, res)=> {
     logger.info("Books API");
 });
 
-app.listen(() => {
+app.listen(port, () => {
     logger.info(`START: server listening on http://localhost:${port}`);
 })

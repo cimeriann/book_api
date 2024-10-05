@@ -6,17 +6,18 @@ const { StatusCodes } = require("http-status-codes");
 const { errorResponse, successResponse } = require("../utils/errorHandler");
 const {
   generateSecurePassword,
-  isValid,
+  checkValidity,
   createAccessToken,
+  isTokenValid,
 } = require("../utils/jwtUtils");
 const User = require("../models/User");
 
-const createUser = async (req, res, next) => {
+exports.createUser = async (req, res, next) => {
   try {
     logger.info("START: Create User Service");
 
     const { firstName, lastName, userName, email, password } = req.body;
-
+    console.log(firstName, lastName, userName, email);
     const userExists = await User.findOne({ email });
     if (userExists) {
       logger.info("END: Create User Service");
@@ -36,10 +37,10 @@ const createUser = async (req, res, next) => {
         return errorResponse(res, StatusCodes.NOT_ACCEPTABLE, 'password length must be greater than or equal to six characters');
     }
     const newUser = await User.create({
-        firstName, 
-        lastName,
-        email,
-        userName,
+        firstName: firstName, 
+        lastName: lastName,
+        email: email,
+        userName: userName,
         password: generateSecurePassword(password),
     })
 
@@ -53,7 +54,7 @@ const createUser = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+exports.login = async (req, res, next) => {
     try {
         logger.info(`START: Login Account Service`);
 
@@ -68,32 +69,32 @@ const login = async (req, res, next) => {
             return errorResponse(res, StatusCodes.NOT_FOUND, `User does not exist`);
         }
 
-        if (!isValid(password, user.password)) {
+        if (!checkValidity(password, user.password)) {
             return errorResponse(res, StatusCodes.BAD_REQUEST, `You have entered a wrong username or password`);
         }
 
-        const accessToken = generateToken(user._id);
+        const accessToken = createAccessToken(user._id);
 
         logger.info(`END: Login Account Service`);
         successResponse(res, StatusCodes.OK, `successfully logged in`, {user, token:accessToken});
     } catch (error) {
-        logger.error(err.message);
-        next(err);
+        logger.error(error.message);
+        next(error);
     }
 };
 
 
-const resetPassword = async (req, res, next) => {
+exports.resetPassword = async (req, res, next) => {
     
     try {
         logger.info(`START: Reset Password Service`)
-        const { email, password, newPassword } = req.body;
+        const { userName, password, newPassword } = req.body;
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ userName: userName });
         if(!user){
             return errorResponse(res, StatusCodes.NOT_FOUND, `User does not exist`);
         }
-        if (!checkTokenValidity(password, user.password)) {
+        if (!checkValidity(password, user.password)) {
             return errorResponse(res, StatusCodes.BAD_REQUEST, `You have entered a wrong username or password`);
         }
 
@@ -110,5 +111,3 @@ const resetPassword = async (req, res, next) => {
         next(error);
     }
 }
-
-module.exports = { createUser, resetPassword, login };

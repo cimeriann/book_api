@@ -10,7 +10,7 @@ const isLoggedIn = require('../middleware/authentication');
 bookRouter.post('/createBook', isLoggedIn, createBook);
 bookRouter.get('/getAllBooks', isLoggedIn, getAllBooks);
 bookRouter.get('/getBookById', isLoggedIn, getBook);
-bookRouter.patch('/updateBook', isLoggedIn, updateBook);
+bookRouter.patch('/updateBook/:bookId', isLoggedIn, updateBook);
 bookRouter.delete('/deleteBook', isLoggedIn, deleteBook);
 
 module.exports = bookRouter;

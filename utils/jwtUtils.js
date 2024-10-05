@@ -3,14 +3,14 @@ const { compareSync, hashSync, genSaltSync } = bcrypt;
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const jwt_secret = process.env.JWT_SECRET;
-const { sign } = jwt;
+const { sign, verify } = jwt;
 
 const generateSecurePassword = (password) =>{
     const salt = genSaltSync(10);
     return hashSync(password, salt);
 }
 
-const isValid = (value, otherValue) => {
+const checkValidity = (value, otherValue) => {
     return compareSync(value, otherValue);
 }
 
@@ -19,8 +19,13 @@ const createAccessToken = (id) => {
     return token;
 }
 
+const isTokenValid = (token) => {
+    return verify(token, jwt_secret)
+}
+
 module.exports = {
     generateSecurePassword,
-    isValid,
+    checkValidity,
+    isTokenValid,
     createAccessToken
 }

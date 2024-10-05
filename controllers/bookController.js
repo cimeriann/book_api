@@ -57,7 +57,7 @@ const getAllBooks = async (req, res, next) => {
     logger.info(`START: GET Book Service`);
     const userId = req.user.userId;
 
-    const books = await Books.findOne({ createdBy: userId });
+    const books = await Books.find({ createdBy: userId });
 
     if (!books) {
       logger.info(`END: Get Book Service`);
@@ -72,30 +72,29 @@ const getAllBooks = async (req, res, next) => {
 };
 
 const updateBook = async (req, res, next) => {
-  try {
-    const bookId = req.params.id;
-    const userId = req.user.userId;
-    const { author, title, genre } = req.body;
-
-    const book = await Books.findAndUpdate({
-      _id: bookId,
-      title: title,
-      author: author,
-      genre: genre,
-      createdBy: userId,
-    });
-
-    if (!book) {
-      return errorResponse(res, StatusCodes.BAD_REQUEST, `book does not exist`);
+    try {
+      const { bookId } = req.params;
+      console.log(bookId)
+      const userId = req.user.userId;
+      const { author, title, genre } = req.body;
+  
+      const book = await Books.findByIdAndUpdate(
+        { _id: bookId, createdBy: userId },
+        { title, author, genre },
+        { new: true, runValidators: true }
+      );
+  
+      if (!book) {
+        return errorResponse(res, StatusCodes.BAD_REQUEST, `Book does not exist`);
+      }
+  
+      successResponse(res, StatusCodes.OK, `Successfully updated the book`, book);
+    } catch (error) {
+      logger.error(error);
+      next(error);
     }
-
-    successResponse(res, StatusCodes.OK, `successfully udpated a book`, book);
-  } catch (error) {
-    logger.error(error);
-    next(error);
-  }
-};
-
+  };
+  
 const deleteBook = async (req, res, next) => {
   try {
     const bookId = req.params.id;

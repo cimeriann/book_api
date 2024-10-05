@@ -1,9 +1,10 @@
 const ApiError = require('./errorhandler/api-error');
-const { isValid } = require('../utils/jwtUtils');
+const { isTokenValid } = require('../utils/jwtUtils');
 
 const isLoggedIn = (req, res, next) => {
-    const authHeader = req.headers['authorization']
 
+    const authHeader = req.headers['authorization']
+    console.log(authHeader)
 
     if (!authHeader){
         return next(ApiError.badRequest('unauthorized'))
@@ -14,10 +15,11 @@ const isLoggedIn = (req, res, next) => {
         const token = authHeader.split(' ')[1]
 
         try{
-            const payload = isValid(token)
+            const payload = isTokenValid(token);
             req.user = {userId: payload.id}
             next()
         }catch(error){
+            console.log(error)
             return next(ApiError.badRequest('Authentication failed'))
         }
     }else{

@@ -1,2 +1,45 @@
 [31m[1m05-10-2024 12:28:32 error Failed to connect to database[22m[39m
 [31m[1m05-10-2024 12:30:15 error Failed to connect to database[22m[39m
+[31m[1m05-10-2024 20:03:57 error Failed to connect to database[22m[39m
+[31m[1m05-10-2024 20:06:22 error Failed to connect to database[22m[39m
+[31m[1m05-10-2024 20:29:29 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:46:40 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:48:07 error [POST /api/auth/register/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:51:13 error [POST /api/auth/register/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:53:44 error [POST /api/auth/register/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:55:15 error [POST /api/auth/register/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:59:52 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 20:59:55 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:10:32 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:10:50 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:17:28 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:17:50 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:19:51 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:20:04 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:20:12 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:20:35 error users validation failed: username: Path `username` is required.[22m[39m
+[31m[1m05-10-2024 21:21:11 error users validation failed: username: Path `username` is required.[22m[39m
+[31m[1m05-10-2024 21:23:02 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:27:59 error [POST /api/auth/createUser/] Cannot read properties of undefined (reading 'NOT_FOUND')[22m[39m
+[31m[1m05-10-2024 21:31:49 error generateToken is not defined[22m[39m
+[31m[1m05-10-2024 22:03:38 error Failed to connect to database[22m[39m
+[31m[1m05-10-2024 22:18:07 error Books.findAll is not a function[22m[39m
+[31m[1m05-10-2024 22:23:02 error Books.findAndUpdate is not a function[22m[39m
+[31m[1m05-10-2024 22:24:32 error Cast to ObjectId failed for value "{[22m[39m
+[31m[1m  _id: undefined,[22m[39m
+[31m[1m  title: 'harry potter',[22m[39m
+[31m[1m  author: 'Olayinkaaa the humble',[22m[39m
+[31m[1m  genre: 'fantasy',[22m[39m
+[31m[1m  createdBy: '6701a0a2f69e9ba8e16e3653'[22m[39m
+[31m[1m}" (type Object) at path "_id" for model "books"[22m[39m
+[31m[1m05-10-2024 22:28:14 error Cast to ObjectId failed for value "{[22m[39m
+[31m[1m  _id: undefined,[22m[39m
+[31m[1m  title: 'harry potter',[22m[39m
+[31m[1m  author: 'Olayinkaaa the humble',[22m[39m
+[31m[1m  genre: 'fantasy',[22m[39m
+[31m[1m  createdBy: '6701a0a2f69e9ba8e16e3653'[22m[39m
+[31m[1m}" (type Object) at path "_id" for model "books"[22m[39m
+[31m[1m05-10-2024 22:34:25 error Cast to ObjectId failed for value "{ _id: undefined, createdBy: '6701a0a2f69e9ba8e16e3653' }" (type Object) at path "_id" for model "books"[22m[39m
+[31m[1m05-10-2024 22:36:19 error Cast to ObjectId failed for value "{ _id: undefined, createdBy: '6701a0a2f69e9ba8e16e3653' }" (type Object) at path "_id" for model "books"[22m[39m
+[31m[1m05-10-2024 22:37:33 error Cast to ObjectId failed for value "{ _id: undefined, createdBy: '6701a0a2f69e9ba8e16e3653' }" (type Object) at path "_id" for model "books"[22m[39m
+[31m[1m05-10-2024 22:37:55 error Cast to ObjectId failed for value "{ _id: undefined, createdBy: '6701a0a2f69e9ba8e16e3653' }" (type Object) at path "_id" for model "books"[22m[39m
